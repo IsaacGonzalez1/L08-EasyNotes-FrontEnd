@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Edit Note</title>
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/album/">
+  <link href="/src/styles.scss" rel="stylesheet">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f4f4;
+      color: #333;
+    }
+
+    .form-label {
+      color: #558974; /* Dark green for labels */
+      font-weight: bold;
+    }
+
+    .form-control {
+      background-color: #fff;
+      border: 1px solid #ced4da;
+      border-radius: 0.25rem;
+    }
+
+    .form-control:focus {
+      border-color: #80c9a7; /* Light green for focus */
+      box-shadow: 0 0 0 0.2rem rgba(125, 203, 160, 0.25);
+    }
+
+    .form-check-input {
+      width: 20px;
+      height: 20px;
+    }
+
+    .btn-primary {
+      color: #fff;
+      background-color: #7dcba0; /* Main theme green */
+      border-color: #66b38f;
+    }
+
+    .btn-primary:hover {
+      background-color: #66b38f;
+      border-color: #558974;
+    }
+
+    .btn-secondary {
+      color: #fff;
+      background-color: #558974; /* Darker green */
+      border-color: #446b5a;
+    }
+
+    .btn-secondary:hover {
+      background-color: #446b5a;
+    }
+  </style>
+</head>
+<body>
+<div class="container mt-5">
+  <form *ngIf="noteForm" [formGroup]="noteForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="title" class="form-label">Title</label>
+      <input class="form-control" formControlName="title" placeholder="Text Here..." id="Title" />
+    </div>
+    <div class="mb-3">
+      <label for="content" class="form-label">Content</label>
+      <textarea class="form-control" formControlName="content" placeholder="Text Here..." id="Content" rows="3"></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="is_shared" class="form-label">Is shared?</label>
+      <input type="checkbox" class="form-check-input" formControlName="is_shared" id="Is_shared" />
+    </div>
+    <div class="mb-3">
+      <button type="submit" class="btn btn-primary">Confirm</button>
+      <button type="button" class="btn btn-secondary" onClick="history.go(-1);">Cancel</button>
+    </div>
+  </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Create Note</title>
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/album/">
+  <link href="/src/styles.scss" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f4f4;
+      color: #333;
+    }
+
+    .form-section {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      display: block;
+      color: #558974; 
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .form-control {
+      display: block;
+      width: 100%;
+      padding: 0.375rem 0.75rem;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #495057;
+      background-color: #fff;
+      background-clip: padding-box;
+      border: 1px solid #ced4da;
+      border-radius: 0.25rem;
+      transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+
+    .form-control:focus {
+      color: #495057;
+      background-color: #fff;
+      border-color: #80c9a7; 
+      outline: 0;
+      box-shadow: 0 0 0 0.2rem rgba(125, 203, 160, 0.25);
+    }
+
+    .btn-success {
+      color: #fff;
+      background-color: #7dcba0;
+      border-color: #66b38f;
+    }
+    .btn {
+      margin-right: 10px; 
+    }
+    .btn:last-child {
+      margin-right: 0; 
+    }
+    .btn-success:hover {
+      color: #fff;
+      background-color: #66b38f;
+      border-color: #558974;
+    }
+
+    .btn-secondary {
+      color: #fff;
+      background-color: #6c757d;
+      border-color: #6c757d;
+    }
+
+    .btn-secondary:hover {
+      color: #fff;
+      background-color: #5a6268;
+      border-color: #545b62;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <form [formGroup]="noteForm" (ngSubmit)="onSubmit()" class="create-note-form">
+      <div class="form-section">
+        <label for="title" class="form-label">Note Title</label>
+        <input type="text" id="title" class="form-control" formControlName="title" placeholder="Enter title here...">
+      </div>
+      <div class="form-section">
+        <label for="content" class="form-label">Note Content</label>
+        <textarea id="content" class="form-control" formControlName="content" placeholder="Enter content here..." rows="4"></textarea>
+      </div>
+      <div class="form-section">
+        <label for="list-collections" class="form-label">Select a Collection:</label>
+        <select id="list-collections" formControlName="collection" class="form-control">
+          <option value="" disabled selected>Select one</option>
+          <option *ngFor="let collection of listCollection" [value]="collection.id">{{ collection.description }}</option>
+        </select>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn btn-success">Create Note</button>
+        <button type="button" class="btn btn-secondary" onClick="history.go(-1);">Cancel</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

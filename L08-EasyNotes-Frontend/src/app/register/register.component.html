@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Register</title>
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/album/">
+  <link href="/src/styles.scss" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f4f4;
+      color: #333;
+    }
+
+    .card {
+      border: none;
+      background-color: #fff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .titulo {
+      font-size: 24px;
+      color: #558974; 
+      font-weight: bold;
+      margin-bottom: 20px; 
+    }
+
+    .btn-custom, .btn-secondary-custom {
+      color: #fff;
+      border-color: white;
+      background-color: #7dcba0; 
+    }
+
+    .btn-secondary-custom {
+      background-color: #558974; 
+    }
+
+    .btn-custom:hover, .btn-secondary-custom:hover {
+      background-color: #66b38f; 
+    }
+
+    .form-control {
+      background-color: #fff;
+      border: 1px solid #ced4da;
+      border-radius: 0.25rem;
+    }
+
+    .form-control:focus {
+      border-color: #80c9a7; 
+      box-shadow: 0 0 0 0.2rem rgba(125, 203, 160, 0.25);
+    }
+
+    .text-danger {
+      color: #e74c3c; 
+    }
+  </style>
+</head>
+<body>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-6 offset-lg-3">
+      <div class="card">
+        <div class="card-body text-center">
+          <span class="titulo">REGISTER</span>
+          <button routerLink="pantallaInicial" class="btn btn-secondary-custom btn-lg float-start">
+            BACK
+          </button>
+          <form class="mt-3" [formGroup]="registerForm" (ngSubmit)="onRegister()">
+            <div class="mb-3">
+              <input type="text" formControlName="name" class="form-control form-control-lg" placeholder="Name">
+              <div class="text-danger" *ngIf="registerForm.get('name')?.hasError('required') && registerForm.get('name')?.touched">
+                <span>Name field <strong>IS REQUIRED</strong></span>
+              </div>
+            </div>
+            <div class="mb-3">
+              <input type="text" formControlName="surname" class="form-control form-control-lg" placeholder="Surname">
+              <div class="text-danger" *ngIf="registerForm.get('surname')?.hasError('required') && registerForm.get('surname')?.touched">
+                <span>Surname field <strong>IS REQUIRED</strong></span>
+              </div>
+            </div>
+            <div class="mb-3">
+              <input type="password" formControlName="hash" class="form-control form-control-lg" placeholder="Password">
+              <div class="text-danger" *ngIf="registerForm.get('hash')?.hasError('required') && registerForm.get('hash')?.touched">
+                <span>Password field <strong>IS REQUIRED</strong></span>
+              </div>
+            </div>
+            <div class="mb-3">
+              <button type="submit" class="btn btn-custom btn-lg float-end">
+                SIGN UP
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

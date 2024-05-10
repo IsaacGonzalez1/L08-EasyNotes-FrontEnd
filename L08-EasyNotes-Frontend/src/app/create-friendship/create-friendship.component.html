@@ -1,0 +1,14 @@
+<form [formGroup]="friendshipForm" (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+    <label for="name_user2" class="form-label">User Name</label>
+    <input type="text" class="form-control" formControlName="name_user2" placeholder="Enter user name...">
+  </div>
+  <div class="mb-3">
+    <label for="id_user2" class="form-label">User ID</label>
+    <input type="number" class="form-control" formControlName="id_user2" placeholder="Enter user ID...">
+  </div>
+  <div class="mb-3">
+    <button type="submit" class="btn btn-primary">Create</button>
+    <button type="button" class="btn btn-primary" onClick="history.go(-1);">Cancel</button>
+  </div>
+</form>

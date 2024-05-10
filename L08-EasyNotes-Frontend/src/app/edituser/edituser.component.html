@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Edit User</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f4f4;
+      color: #333;
+    }
+
+    .form-label {
+      color: #558974; 
+      font-weight: bold;
+    }
+
+    .form-control {
+      background-color: #fff;
+      border: 1px solid #ced4da;
+      border-radius: 0.25rem;
+    }
+
+    .form-control:focus {
+      border-color: #80c9a7; 
+      box-shadow: 0 0 0 0.2rem rgba(125, 203, 160, 0.25);
+    }
+
+    .btn-primary {
+      color: #fff;
+      background-color: #7dcba0; 
+      border-color: #66b38f;
+    }
+
+    .btn-primary:hover {
+      background-color: #66b38f;
+      border-color: #558974;
+    }
+
+    .btn-secondary {
+      background-color: #558974; 
+      color: #fff;
+      border-color: #446b5a;
+    }
+
+    .btn-secondary:hover {
+      background-color: #446b5a;
+    }
+  </style>
+</head>
+<body>
+<div class="container mt-5">
+  <form *ngIf="userForm" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input class="form-control" formControlName="name" placeholder="Text Here..." id="Name">
+    </div>
+    <div class="mb-3">
+      <label for="surname" class="form-label">Surname</label>
+      <input class="form-control" formControlName="surname" placeholder="Text Here..." id="Surname">
+    </div>
+    <div class="mb-3">
+      <label for="is_enabled" class="form-label">Enabled</label>
+      <input type="checkbox" class="form-check-input" id="is_enabled" value="ckbox">
+    </div>
+    <div class="mb-3">
+      <label for="hash" class="form-label">Hash</label>
+      <input class="form-control" formControlName="hash" placeholder="Text Here..." id="Hash">
+    </div>
+    <div class="mb-3">
+      <button type="submit" class="btn btn-primary">Confirm</button>
+      <button type="button" class="btn btn-primary" onClick="history.go(-1);">
+        Exit
+      </button>
+    </div>
+  </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>List Notes</title>
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/album/">
+    <link href="/src/styles.scss" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f4f4; 
+        color: #333;
+      }
+
+      header {
+        background-color: #7dcba0; 
+        color: white;
+      }
+
+      .navbar {
+        background-color: #66b38f; 
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      
+      .btn-custom-primary {
+        background-color: #7dcba0; 
+        border-color: #66b38f;
+        color: white;
+      }
+
+      .btn-custom-secondary {
+        background-color: #66b38f; 
+        border-color: #558974;
+        color: white;
+      }
+
+      .btn-custom-logout {
+        background-color: #558974; 
+        border-color: #446b5a;
+        color: white;
+      }
+
+      
+      .btn-space {
+        margin-right: 30px;
+      }
+      .collapse.custom-bg {
+        background-color: #558974; 
+        color: white;
+      }
+
+      
+      .card {
+        background-color: white;
+        border: none;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+
+      .card-body {
+        padding: 20px;
+      }
+
+      .btn-outline-secondary {
+        border-color: #7dcba0;
+        color: #7dcba0;
+      }
+
+      .btn-outline-secondary:hover {
+        background-color: #7dcba0;
+        color: white;
+      }
+      .h1 {
+        font-size: 24px;
+        font-weight: bold;
+        color: #333;
+      }
+      
+      .card-text {
+        color: #333;
+      }
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="collapse " id="navbarHeader">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-4 offset-md-1 py-4">
+              <ul class="list-unstyled">
+                <li><a [routerLink]="['/login', userID]" class="text-white">LOGOUT</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="navbar navbar-dark shadow-sm">
+        <div class="container">
+          <a href="#" class="navbar-brand d-flex align-items-center">
+            <strong>EasyNotes</strong>
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section class="py-5 text-center container">
+        <div class="row py-lg-5">
+          <div class="col-lg-6 col-md-8 mx-auto">
+            <h1 class="fw-light">My Notes</h1>
+            <p>
+              <button type="button" class="btn btn-custom-primary my-2 btn-space" [routerLink]="['/create-note', userID]">ADD NEW NOTE</button>
+              <button type="button" class="btn btn-custom-secondary my-2 btn-space" [routerLink]="['/list-friendships', userID]">MY FRIENDSHIPS</button>
+              <button type="button" class="btn btn-custom-secondary my-2" [routerLink]="['/list-collections', userID]">MY COLLECTIONS</button>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="album py-5 bg-light">
+        <div class="container">
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <div class="col" *ngFor="let note of notes">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <p class="card-text h1">{{ note.title }}</p>
+                  <p class="card-text">{{ note.content }}</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-outline-secondary" (click)="NotesDelete(note.id)">Delete</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary" [routerLink]="['/edit-note', note.id]">Edit</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+<section class="py-5 text-center container">
+  <div class="row py-lg-5">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <h1 class="fw-light">My Shared Notes</h1>
+    </div>
+  </div>
+</section>
+<div class="album py-5 bg-light">
+  <div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      <div class="col" *ngFor="let sharedNote of sharedNotesList">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <p class="card-text h1">{{ sharedNote.title }}</p>
+            <p class="card-text">{{ sharedNote.content }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Login</title>
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/album/">
+  <link href="/src/styles.scss" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f4f4; 
+      color: #333; 
+    }
+  
+    .card {
+      border: none;
+      background-color: #fff; 
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+  
+    .titulo {
+      font-size: 24px;
+      color: #558974; 
+      font-weight: bold;
+    }
+  
+    .form-control {
+      background-color: #fff;
+      border: 1px solid #ced4da;
+      border-radius: 0.25rem;
+    }
+  
+    .form-control:focus {
+      border-color: #80c9a7; 
+      box-shadow: 0 0 0 0.2rem rgba(125, 203, 160, 0.25);
+    }
+  
+    .btn-custom {
+      color: #fff;
+      background-color: #7dcba0; 
+      border: none;
+    }
+  
+    .btn-custom:hover {
+      background-color: #66b38f; 
+    }
+  
+    .btn-secondary-custom {
+      background-color: #558974; 
+      border: none;
+      color: white;
+    }
+  
+    .btn-secondary-custom:hover {
+      background-color: #558e75; 
+    }
+  
+    .text-danger {
+      color: #e74c3c; 
+    }
+  </style>
+  
+</head>
+<body>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-lg-6 offset-lg-3">
+        <div class="card">
+          <div class="card-body text-center">
+            <span class="titulo">LOGIN</span>
+            <button routerLink="users/signup" class="btn btn-secondary-custom btn-lg float-end">REGISTER</button>
+  
+            <form class="mt-3" [formGroup]="loginForm" (ngSubmit)="onLogin()">
+              <div class="mb-3">
+                <input type="name" formControlName="name" class="form-control form-control-lg" placeholder="Name" />
+              </div>
+              <div class="mb-3">
+                <input type="surname" formControlName="surname" class="form-control form-control-lg" placeholder="Surname" />
+              </div>
+              <div class="mb-3">
+                <input type="password" formControlName="password" class="form-control form-control-lg" placeholder="Password" />
+              </div>
+              <div class="mb-3">
+                <button type="submit" class="btn btn-custom btn-lg float-end">
+                  LOGIN
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</body>
+</html>

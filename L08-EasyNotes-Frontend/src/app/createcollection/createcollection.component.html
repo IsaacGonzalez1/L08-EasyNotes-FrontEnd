@@ -1,0 +1,20 @@
+<form>
+  <br />
+  <div>
+    <form [formGroup]="collectionForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="description" class="form-label" style="color: #558974; font-weight: bold;">Description</label>
+        <input
+          class="form-control"
+          formControlName="description"
+          placeholder="Text Here..."
+          style="background-color: #fff; border: 1px solid #ced4da; border-radius: 0.25rem;"
+        />
+      </div>
+      <div class="mb-3">
+        <button type="submit" class="btn btn-primary" style="color: #fff; background-color: #7dcba0; border-color: #66b38f;">Create</button>
+        <button type="button" class="btn btn-primary" onClick="history.go(-1);" style="background-color: #7dcba0; border-color: #66b38f;">Cancel</button>
+      </div>
+    </form>
+  </div>
+</form>
